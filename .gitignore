@@ -1,1 +1,3 @@
 venv/
+crowdfunding/crowdfunding/__pycache__/
+crowdfunding/projects/__pycache__/
