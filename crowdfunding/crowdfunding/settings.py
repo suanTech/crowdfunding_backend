@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'projects.apps.ProjectsConfig',
+    'users.apps.UsersConfig',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -71,7 +72,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'crowdfunding.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -81,7 +81,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+# Auth model
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
