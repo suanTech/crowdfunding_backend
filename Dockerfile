@@ -16,7 +16,6 @@ RUN set -ex && \
     rm -rf /root/.cache/
 COPY crowdfunding/ /code/
 
-ENV SECRET_KEY "lYS6c33sLIfVYs780oM1N1K26U0QjmOSMcKFnWqYu1ooNCbgi4"
 RUN chmod +x /code/run.sh
 
 EXPOSE 8000
