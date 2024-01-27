@@ -66,10 +66,10 @@ Fill out the table below to define your endpoints. An example of what this might
 
 ### DB Schema
 
-![DB Schema](./crowdfunding/staticfiles/public/img/db-schema.png)
+![DB Schema](./public/img/db-schema.png)
 
 ### Screenshots
 
-![DB Schema](./crowdfunding/staticfiles/public/img/get-userlist.png)
-![DB Schema](./crowdfunding/staticfiles/public/img/post-user.png)
-![DB Schema](./crowdfunding/staticfiles/public/img/post-project-fail.png)
+![DB Schema](./public/img/get-userlist.png)
+![DB Schema](./public/img/post-user.png)
+![DB Schema](./public/img/post-project-fail.png)
