@@ -1,11 +1,13 @@
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, permissions
 from .models import CustomUser
 from .serializers import CustomUserSerializer
+from .permissions import IsSuperUser, IsSuperUserOrCurrentUser, IsOwnerOrReadOnly
 
 class CustomUserList(APIView):
+  permission_classes = [permissions.IsAuthenticated, IsSuperUser]
   def get(self, request):
     users = CustomUser.objects.all()
     serializer = CustomUserSerializer(users, many=True)
@@ -18,6 +20,7 @@ class CustomUserList(APIView):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
   
 class CustomUserDetail(APIView):
+  permission_classes = [permissions.IsAuthenticated, IsSuperUserOrCurrentUser]
   def get_object(self, pk):
     try: 
       return CustomUser.objects.get(pk=pk)
