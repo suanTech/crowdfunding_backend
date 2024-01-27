@@ -6,7 +6,7 @@
 
 ### Concept/Name
 ::Hackeraiser::
-Your friendly hub for supporting innovative and fun tech ideas/projects. Join us in helping creators make the world a better place, one project at a time.
+Your friendly hub for supporting innovative and fun tech ideas/projects. Hackeraiser helps creators make the world a better place, one project at a time.
 
 ### Intended Audience/User Stories
 - Developers
