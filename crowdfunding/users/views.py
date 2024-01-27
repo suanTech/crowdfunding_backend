@@ -4,14 +4,14 @@ from rest_framework.response import Response
 from rest_framework import status, permissions
 from .models import CustomUser
 from .serializers import CustomUserSerializer
-from .permissions import IsSuperUser, IsSuperUserOrCurrentUser, IsOwnerOrReadOnly
 
 class CustomUserList(APIView):
-  permission_classes = [permissions.IsAuthenticated, IsSuperUser]
   def get(self, request):
-    users = CustomUser.objects.all()
-    serializer = CustomUserSerializer(users, many=True)
-    return Response(serializer.data)
+    if request.user.is_superuser:
+      users = CustomUser.objects.all()
+      serializer = CustomUserSerializer(users, many=True)
+      return Response(serializer.data)
+    return Response(status=status.HTTP_401_UNAUTHORIZED)
   def post(self, request):
     serializer = CustomUserSerializer(data=request.data)
     if serializer.is_valid():
@@ -20,7 +20,7 @@ class CustomUserList(APIView):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
   
 class CustomUserDetail(APIView):
-  permission_classes = [permissions.IsAuthenticated, IsSuperUserOrCurrentUser]
+  permission_classes = [permissions.IsAuthenticated]
   def get_object(self, pk):
     try: 
       return CustomUser.objects.get(pk=pk)
