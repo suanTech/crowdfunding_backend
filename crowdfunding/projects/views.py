@@ -28,7 +28,7 @@ class ProjectDetail(APIView):
         try:
           project = Project.objects.get(pk=pk)
           self.check_object_permissions(self.request, project)
-          return 
+          return project
         except Project.DoesNotExist:
             raise Http404
 
@@ -46,7 +46,7 @@ class ProjectDetail(APIView):
         if serializer.is_valid():
             serializer.save()
 class PledgeList(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     def get(self, request):
         pledges = Pledge.objects.all()
         serializer = PledgeSerializer(pledges, many=True)
