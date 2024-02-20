@@ -18,12 +18,12 @@ class PledgeSerializer(serializers.ModelSerializer):
 
 class ProjectSerializer(serializers.ModelSerializer):
   owner = serializers.ReadOnlyField(source='owner.id')
+  pledges = PledgeSerializer(many=True, read_only=True)
   class Meta:        
     model = Project
     fields ='__all__'
 
 class ProjectDetailSerializer(ProjectSerializer):
-  pledges = PledgeSerializer(many=True, read_only=True)
   def update(self, instance, validated_data):
     instance.title = validated_data.get('title', instance.title)
     instance.description = validated_data.get('description', instance.description)
