@@ -22,7 +22,6 @@ class CustomUserList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CustomUserDetail(APIView):
-    permission_classes = [permissions.IsAuthenticated]
     def get_object(self, pk):
         try:
             return CustomUser.objects.get(pk=pk)
